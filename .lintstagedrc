@@ -1,0 +1,4 @@
+{
+  "(src)/**/*.js": ["eslint --ignore-pattern '!.*.js' --fix", "prettier --write"],
+  "*.md": ["prettier --write"]
+}
