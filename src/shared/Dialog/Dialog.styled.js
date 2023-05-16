@@ -41,6 +41,7 @@ export const Header = styled.div({
   minHeight: 64,
   alignItems: 'center',
   padding: '10px 20px',
+  fontWeight: 700,
 
   '& button': {
     fontSize: 16,

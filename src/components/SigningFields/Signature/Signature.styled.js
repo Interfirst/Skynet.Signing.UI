@@ -42,11 +42,16 @@ export const DialogNavigation = styled.div({
   '& button': {
     color: '#000000',
     borderRadius: 0,
-    borderBottom: '2px solid transparent',
+    borderBottom: '3px solid transparent',
 
     '&[data-is-active="true"]': {
-      borderColor: '#000000',
+      borderColor: ({ $brandSettings }) =>
+        get($brandSettings, 'colors.formControls.containedButton.backgroundColor'),
       fontWeight: 600,
+    },
+
+    '&[data-is-active="false"]': {
+      opacity: 0.5,
     },
   },
 });

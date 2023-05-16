@@ -41,6 +41,7 @@ const Signature = ({
   const [isDialogOpened, setIsDialogOpened] = useState(false);
   const [activeSignatureType, setActiveSignatureType] = useState(type);
   const [tempSignatureFont, setTempSignatureFont] = useState(fonts[0]);
+  const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
 
   const isMoreThanOneSigTypeField = signatureRelatedElementIds.length > 1;
 
@@ -60,14 +61,32 @@ const Signature = ({
     setIsDialogOpened(true);
   }, [isLoading]);
 
+  const onDrawingEnd = useCallback(() => {
+    switch (activeSignatureType) {
+      case HelloSignTagType.SIGNATURE:
+        const isEmpty = tempSignatureFieldRef.current?.isEmpty?.() ?? true;
+        setIsSubmitButtonDisabled(isEmpty);
+        break;
+
+      case HelloSignTagType.INITIAL:
+        setIsSubmitButtonDisabled(!tempSignatureFieldRef.current.value);
+        break;
+
+      default:
+        break;
+    }
+  }, [activeSignatureType]);
+
   const onClearTempSignature = useCallback(() => {
     switch (activeSignatureType) {
       case HelloSignTagType.SIGNATURE:
         tempSignatureFieldRef.current.clear();
+        onDrawingEnd();
         break;
 
       case HelloSignTagType.INITIAL:
         tempSignatureFieldRef.current.value = '';
+        onDrawingEnd();
         break;
 
       default:
@@ -88,17 +107,13 @@ const Signature = ({
       const getSignatureUrl = () => {
         switch (activeSignatureType) {
           case HelloSignTagType.SIGNATURE: {
-            const isEmpty = tempSignatureFieldRef.current.isEmpty();
-            const url = tempSignatureFieldRef.current.getTrimmedCanvas().toDataURL('image/png');
-
-            return isEmpty ? null : url;
+            return tempSignatureFieldRef.current.getTrimmedCanvas().toDataURL('image/png');
           }
 
           case HelloSignTagType.INITIAL: {
-            const { value } = tempSignatureFieldRef.current;
-            const url = convertTextToImage(value, { fontFamily: tempSignatureFont.name });
-
-            return value ? url : null;
+            return convertTextToImage(tempSignatureFieldRef.current.value, {
+              fontFamily: tempSignatureFont.name,
+            });
           }
 
           default:
@@ -191,7 +206,7 @@ const Signature = ({
         onClose={onDialogClose}
       >
         <form noValidate onSubmit={onSignatureInsert}>
-          <DialogNavigation>
+          <DialogNavigation $brandSettings={brandSettings}>
             <Button
               data-id={HelloSignTagType.SIGNATURE}
               data-is-active={activeSignatureType === HelloSignTagType.SIGNATURE}
@@ -220,7 +235,11 @@ const Signature = ({
                   Clear
                 </Button>
 
-                <SignatureCanvas canvasProps={formattedCanvasProps} ref={tempSignatureFieldRef} />
+                <SignatureCanvas
+                  onEnd={onDrawingEnd}
+                  canvasProps={formattedCanvasProps}
+                  ref={tempSignatureFieldRef}
+                />
               </>
             )}
 
@@ -234,6 +253,7 @@ const Signature = ({
 
                 <SignatureInput
                   autoFocus
+                  onChange={onDrawingEnd}
                   fontFamily={tempSignatureFont.name}
                   ref={tempSignatureFieldRef}
                   type="text"
@@ -251,7 +271,12 @@ const Signature = ({
               </Button>
 
               <div>
-                <Button color="primary" type="submit" variant="contained">
+                <Button
+                  disabled={isSubmitButtonDisabled}
+                  color="primary"
+                  type="submit"
+                  variant="contained"
+                >
                   {isMoreThanOneSigTypeField ? 'Accept and Sign Everywhere' : 'Accept and Sign'}
                 </Button>
               </div>

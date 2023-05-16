@@ -12,7 +12,6 @@ const commonStyles = {
 };
 
 const selectComponents = {
-  DropdownIndicator: () => null,
   IndicatorSeparator: () => null,
 };
 

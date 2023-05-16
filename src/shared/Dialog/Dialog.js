@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { Blanket, Content, DivRoot, Header } from './Dialog.styled';
+import Button from '../Button';
 
 const Dialog = ({ isOpened, onClose, children, header, brandSettings }) => {
   if (!isOpened) {
@@ -16,9 +17,9 @@ const Dialog = ({ isOpened, onClose, children, header, brandSettings }) => {
         <Header>
           {header}
 
-          <button type="button" onClick={onClose}>
+          <Button variant="text" type="button" onClick={onClose}>
             ✕
-          </button>
+          </Button>
         </Header>
 
         {children}
