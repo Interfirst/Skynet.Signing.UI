@@ -7,7 +7,7 @@ import BrandSettingsContext from '../../contexts/brandSettings';
 const ButtonStyled = styled.button({
   color: ({ variant, $brandSettings }) => {
     if (variant === 'text') {
-      return get($brandSettings, 'colors.formControls.infoButton.textColor');
+      return get($brandSettings, 'colors.typography.label.labelTextColor');
     }
 
     return get($brandSettings, 'colors.formControls.containedButton.textColor');
