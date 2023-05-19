@@ -1,6 +1,6 @@
 {
   "name": "@interfirst/signing-custom-service",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/components/FormPreviewContent/index.js",
   "module": "dist/components/FormPreviewContent/index.js",
   "dependencies": {
