@@ -42,6 +42,7 @@ export const Header = styled.div({
   alignItems: 'center',
   padding: '10px 20px',
   fontWeight: 700,
+  fontSize: 16,
 
   '& button': {
     fontSize: 16,
@@ -49,5 +50,6 @@ export const Header = styled.div({
     border: 'none',
     cursor: 'pointer',
     padding: 10,
+    color: ({ $brandSettings }) => get($brandSettings, 'colors.modalViews.closeButtonColor'),
   },
 });

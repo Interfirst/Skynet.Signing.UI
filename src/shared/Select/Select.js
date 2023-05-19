@@ -3,6 +3,8 @@ import ReactSelect from 'react-select';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 
+const classNamePrefix = 'reactSelectPrefix';
+
 const Select = ({
   styles,
   components,
@@ -55,6 +57,13 @@ const Select = ({
           color: hoverTextColor,
         },
       }),
+      indicatorsContainer: () => ({
+        [`.${classNamePrefix}`]: {
+          '&__dropdown-indicator': {
+            padding: 0,
+          },
+        },
+      }),
       indicatorSeparator: styles => ({
         ...styles,
         display: 'none',
@@ -75,6 +84,7 @@ const Select = ({
       styles={commonStyles}
       value={value}
       onChange={onChange}
+      classNamePrefix={classNamePrefix}
     />
   );
 };
