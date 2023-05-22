@@ -6,7 +6,7 @@ import { downloadFileFromBlob } from '@interfirst/utils';
 import { get, isEmpty, last, size } from 'lodash';
 
 import { toastContainerStyle } from '../../constants/FormPreview.constants';
-import { defaultProps, previewData } from '../../constants/FormPreview.stubData';
+// import { defaultProps, previewData } from '../../constants/FormPreview.stubData';
 import BrandSettingsContext from '../../contexts/brandSettings';
 import Button from '../../shared/Button';
 import { axiosAccountsInstance } from '../../utils/accountsApi';
@@ -229,6 +229,6 @@ FormPreviewContent.propTypes = {
 
 // <--- For dev purposes --->
 
-FormPreviewContent.defaultProps = defaultProps;
+// FormPreviewContent.defaultProps = defaultProps;
 
 export default memo(FormPreviewContent);

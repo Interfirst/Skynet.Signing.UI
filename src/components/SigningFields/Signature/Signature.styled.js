@@ -93,7 +93,6 @@ export const DialogMain = styled.div({
     position: 'absolute',
     top: 25,
     left: 20,
-    color: '#000000',
   },
 
   '& canvas': {
