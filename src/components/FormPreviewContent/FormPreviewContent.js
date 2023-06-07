@@ -10,7 +10,7 @@ import { toastContainerStyle } from '../../constants/FormPreview.constants';
 import BrandSettingsContext from '../../contexts/brandSettings';
 import Button from '../../shared/Button';
 import { axiosAccountsInstance } from '../../utils/accountsApi';
-import { catchHandler, getAuthHeader } from '../../utils/api';
+import { catchHandler, checkIsAppLoadedInIframe, getAuthHeader } from '../../utils/api';
 import { getInitialFormValues, getSignatureSubmitData, validateFormFields } from '../../utils/data';
 import { axiosSigningInstance } from '../../utils/signingApi';
 import DocumentView from '../DocumentView';
@@ -50,8 +50,10 @@ const FormPreviewContent = ({ signingRequestId, getToken, getDomainName }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    axiosSigningInstance.defaults.headers.common['Authorization'] = getAuthHeader({ getToken });
-    axiosAccountsInstance.defaults.headers.common['Authorization'] = getAuthHeader({ getToken });
+    [axiosSigningInstance, axiosAccountsInstance].forEach(axiosInstance => {
+      axiosInstance.defaults.headers.common['Authorization'] = getAuthHeader({ getToken });
+      axiosInstance.defaults.headers.common['sourceMode'] = checkIsAppLoadedInIframe()  ? 'Iframe' : 'Browser';
+    });
 
     Promise.all([
       axiosSigningInstance

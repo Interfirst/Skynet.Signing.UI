@@ -6,3 +6,11 @@ export const catchHandler = ({ response }) => {
 };
 
 export const getAuthHeader = ({ getToken }) => `Bearer ${getToken()}`;
+
+export const checkIsAppLoadedInIframe = () => {
+  try {
+    return window.self !== window.top;
+  } catch {
+    return true;
+  }
+};
