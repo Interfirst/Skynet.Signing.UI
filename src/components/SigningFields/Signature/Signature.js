@@ -21,6 +21,7 @@ import {
   ResetButton,
   SignatureImg,
   SignatureInput,
+  ConfirmationText,
 } from './Signature.styled';
 
 const Signature = ({
@@ -228,7 +229,7 @@ const Signature = ({
             </Button>
           </DialogNavigation>
 
-          <DialogMain>
+          <DialogMain $brandSettings={brandSettings}>
             {activeSignatureType === HelloSignTagType.SIGNATURE && (
               <>
                 <Button type="button" variant="text" onClick={onClearTempSignature}>
@@ -246,6 +247,7 @@ const Signature = ({
             {activeSignatureType === HelloSignTagType.INITIAL && (
               <>
                 <ChooseFont
+                  brandSettings={brandSettings}
                   setTempSignatureFont={setTempSignatureFont}
                   tempSignatureFieldRef={tempSignatureFieldRef}
                   tempSignatureFont={tempSignatureFont}
@@ -263,7 +265,9 @@ const Signature = ({
           </DialogMain>
 
           <DialogBottom>
-            <div>I understand this is a legal representation of my signature.</div>
+            <ConfirmationText>
+              I understand this is a legal representation of my signature.
+            </ConfirmationText>
 
             <div>
               <Button color="secondary" type="button" variant="contained" onClick={onDialogClose}>

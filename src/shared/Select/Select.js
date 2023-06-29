@@ -17,11 +17,11 @@ const Select = ({
   name,
   value,
   onChange,
+  className,
 }) => {
   const commonStyles = useMemo(() => {
     const {
       borderDefaultColor,
-      textColor,
       borderHoverColor,
       dropDownOptionColor,
       dropDownBackgroundColor,
@@ -34,7 +34,6 @@ const Select = ({
         width: 260,
         marginLeft: 10,
         border: `1px solid ${borderDefaultColor}`,
-        color: textColor,
         background: dropDownBackgroundColor,
         borderRadius: 2,
         height: 46,
@@ -46,6 +45,11 @@ const Select = ({
           boxShadow: 'none',
           border: `1px solid ${borderHoverColor}`,
         },
+      }),
+      placeholder: styles => ({
+        ...styles,
+        color: get(brandSettings, 'colors.formControls.textField.placeholderColor'),
+        fontWeight: 600,
       }),
       option: styles => ({
         ...styles,
@@ -74,6 +78,7 @@ const Select = ({
 
   return (
     <ReactSelect
+      className={className}
       components={components}
       disabled={disabled}
       getOptionLabel={getOptionLabel}
@@ -100,6 +105,7 @@ Select.propTypes = {
   getOptionLabel: PropTypes.func,
   isSearchable: PropTypes.bool,
   placeholder: PropTypes.string,
+  className: PropTypes.string,
   styles: PropTypes.object,
 };
 
@@ -110,6 +116,7 @@ Select.defaultProps = {
   isSearchable: false,
   placeholder: undefined,
   brandSettings: undefined,
+  className: '',
 };
 
 export default memo(Select);

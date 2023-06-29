@@ -8,7 +8,7 @@ export const DivPage = styled.div({
   position: 'relative',
   marginBottom: 10,
 
-  '& canvas': {
+  '& > canvas': {
     border: '1px solid #000000',
   },
 });

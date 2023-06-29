@@ -8,40 +8,54 @@ import Select from '../../../../shared/Select';
 import { fonts } from '../Signature.constants';
 
 const commonStyles = {
-  control: styles => ({ ...styles, display: 'inline-flex', border: 'none' }),
+  control: styles => ({
+    ...styles,
+    display: 'inline-flex',
+    border: 'none',
+    background: 'transparent',
+  }),
+  menu: styles => ({
+    ...styles,
+    width: 200,
+  }),
+  option: styles => ({
+    ...styles,
+    textAlign: 'left',
+  }),
 };
 
 const selectComponents = {
   IndicatorSeparator: () => null,
 };
 
-const OptionLabel = styled.span({
+const OptionLabel = styled.span(({ $brandSettings }) => ({
   fontSize: 18,
   fontStyle: 'italic',
   fontFamily: ({ name }) => `${name} !important`,
-  color: ({ colors }) => get(colors, 'formControls.select.dropDownOptionColor'),
+  color: get($brandSettings, 'color.formControls.select.dropDownOptionColor'),
 
   '& span': {
-    color: ({ colors }) => get(colors, 'formControls.select.dropDownFocusedCheckMarkColor'),
+    color: get($brandSettings, 'colors.formControls.select.dropDownFocusedCheckMarkColor'),
     opacity: ({ isMatched }) => (isMatched ? 1 : 0),
     display: 'inline-block',
     marginRight: 5,
   },
-});
+}));
 
-const ChooseFont = ({ tempSignatureFieldRef, tempSignatureFont, setTempSignatureFont }) => {
+const ChooseFont = ({
+  tempSignatureFieldRef,
+  tempSignatureFont,
+  setTempSignatureFont,
+  brandSettings,
+}) => {
   const getOptionLabel = useCallback(
     ({ name }) => {
       const isMatched = tempSignatureFont.name === name;
       return (
-        <BrandSettingsContext.Consumer>
-          {({ colors }) => (
-            <OptionLabel colors={colors} isMatched={isMatched} name={name}>
-              <span>✓</span>
-              {` ${tempSignatureFieldRef.current.value || name}`}
-            </OptionLabel>
-          )}
-        </BrandSettingsContext.Consumer>
+        <OptionLabel $brandSettings={brandSettings} isMatched={isMatched} name={name}>
+          <span>✓</span>
+          {` ${tempSignatureFieldRef.current.value || name}`}
+        </OptionLabel>
       );
     },
     [tempSignatureFont, tempSignatureFieldRef],
@@ -49,6 +63,8 @@ const ChooseFont = ({ tempSignatureFieldRef, tempSignatureFont, setTempSignature
 
   return (
     <Select
+      brandSettings={brandSettings}
+      className="choose-font-696"
       components={selectComponents}
       getOptionLabel={getOptionLabel}
       isSearchable={false}
@@ -62,6 +78,7 @@ const ChooseFont = ({ tempSignatureFieldRef, tempSignatureFont, setTempSignature
 };
 
 ChooseFont.propTypes = {
+  brandSettings: PropTypes.object.isRequired,
   tempSignatureFieldRef: PropTypes.object.isRequired,
   tempSignatureFont: PropTypes.object.isRequired,
   setTempSignatureFont: PropTypes.func.isRequired,

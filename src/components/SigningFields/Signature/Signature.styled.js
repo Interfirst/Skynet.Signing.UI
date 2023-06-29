@@ -33,27 +33,28 @@ export const SignatureImg = styled.img({
 
 export const baseModalWidth = 600;
 
-export const DialogNavigation = styled.div({
-  display: 'flex',
-  borderBottom: '1px solid #000000',
-  padding: '0px 5px',
-  width: baseModalWidth,
+export const DialogNavigation = styled.div(({ $brandSettings }) => {
+  return {
+    display: 'flex',
+    boxShadow: `0 5px 5px rgba(0,0,0,0.1)`,
+    padding: '0px 5px',
+    width: baseModalWidth,
 
-  '& button': {
-    color: '#000000',
-    borderRadius: 0,
-    borderBottom: '3px solid transparent',
+    '& button': {
+      color: '#000000',
+      borderRadius: 0,
+      borderBottom: '3px solid transparent',
 
-    '&[data-is-active="true"]': {
-      borderColor: ({ $brandSettings }) =>
-        get($brandSettings, 'colors.formControls.containedButton.backgroundColor'),
-      fontWeight: 600,
+      '&[data-is-active="true"]': {
+        borderColor: get($brandSettings, 'colors.formControls.containedButton.backgroundColor'),
+        fontWeight: 600,
+      },
+
+      '&[data-is-active="false"]': {
+        opacity: 0.5,
+      },
     },
-
-    '&[data-is-active="false"]': {
-      opacity: 0.5,
-    },
-  },
+  };
 });
 
 export const DivPlaceholder = styled.div({
@@ -83,32 +84,51 @@ export const DialogBottom = styled.div({
 
 export const dialogMainMargin = 20;
 
-export const DialogMain = styled.div({
-  position: 'relative',
-  padding: `20px ${dialogMainMargin}px 10px ${dialogMainMargin}px`,
-  minHeight: 300,
-  flex: 1,
+export const DialogMain = styled.div(({ $brandSettings }) => {
+  const placeholderColor = get($brandSettings, 'colors.formControls.textField.placeholderColor');
 
-  '& button': {
-    position: 'absolute',
-    top: 25,
-    left: 20,
-  },
+  return {
+    position: 'relative',
+    height: 300,
+    margin: `${dialogMainMargin}px`,
+    background: 'rgba(0, 0, 0, 0.03)',
+    minHeight: 300,
+    textAlign: 'center',
+    flex: 1,
 
-  '& canvas': {
-    border: '1px solid #000000',
-  },
+    '& button, & .choose-font-696': {
+      position: 'absolute',
+      top: 15,
+      left: 10,
+    },
+
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      top: 170,
+      left: '5%',
+      width: '90%',
+      height: 1,
+      boxShadow: `0 2px 2px ${placeholderColor}`,
+    },
+  };
 });
 
 export const SignatureInput = styled.input({
-  marginTop: 10,
-  width: '100%',
+  marginTop: 120,
+  width: '90%',
   height: 50,
   padding: '10px 20px',
-  marginBottom: 10,
   fontSize: 24,
   fontFamily: ({ fontFamily }) => `${fontFamily} !important`,
   fontStyle: 'italic',
   boxSizing: 'border-box',
-  border: '1px solid #000000',
+  border: 'none',
+  background: 'transparent',
+  textAlign: 'center',
+  outline: 'none',
+});
+
+export const ConfirmationText = styled.div({
+  color: 'rgba(0,0,0,0.5)',
 });

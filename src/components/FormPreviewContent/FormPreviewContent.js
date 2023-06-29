@@ -52,7 +52,9 @@ const FormPreviewContent = ({ signingRequestId, getToken, getDomainName }) => {
 
     [axiosSigningInstance, axiosAccountsInstance].forEach(axiosInstance => {
       axiosInstance.defaults.headers.common['Authorization'] = getAuthHeader({ getToken });
-      axiosInstance.defaults.headers.common['sourceMode'] = checkIsAppLoadedInIframe()  ? 'Iframe' : 'Browser';
+      axiosInstance.defaults.headers.common['sourceMode'] = checkIsAppLoadedInIframe()
+        ? 'Iframe'
+        : 'Browser';
     });
 
     Promise.all([
@@ -156,7 +158,7 @@ const FormPreviewContent = ({ signingRequestId, getToken, getDomainName }) => {
       <DivRoot>
         <Helmet>
           <link
-            href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,300;0,400;0,700;0,800;1,300&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Overpass:ital,wght@0,300;0,400;0,700;0,800;1,300&display=swap"
             rel="stylesheet"
           />
         </Helmet>
