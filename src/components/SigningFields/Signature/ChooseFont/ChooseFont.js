@@ -28,19 +28,21 @@ const selectComponents = {
   IndicatorSeparator: () => null,
 };
 
-const OptionLabel = styled.span(({ $brandSettings }) => ({
-  fontSize: 18,
-  fontStyle: 'italic',
-  fontFamily: ({ name }) => `${name} !important`,
-  color: get($brandSettings, 'color.formControls.select.dropDownOptionColor'),
+const OptionLabel = styled.span(({ $brandSettings, name, isMatched }) => {
+  return {
+    fontSize: 18,
+    fontStyle: 'italic',
+    fontFamily: `${name} !important`,
+    color: get($brandSettings, 'color.formControls.select.dropDownOptionColor'),
 
-  '& span': {
-    color: get($brandSettings, 'colors.formControls.select.dropDownFocusedCheckMarkColor'),
-    opacity: ({ isMatched }) => (isMatched ? 1 : 0),
-    display: 'inline-block',
-    marginRight: 5,
-  },
-}));
+    '& span': {
+      color: get($brandSettings, 'colors.formControls.select.dropDownFocusedCheckMarkColor'),
+      opacity: isMatched ? 1 : 0,
+      display: 'inline-block',
+      marginRight: 5,
+    },
+  };
+});
 
 const ChooseFont = ({
   tempSignatureFieldRef,
