@@ -2,8 +2,9 @@ import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 
-import BrandSettingsContext from '../../contexts/brandSettings';
-import { getExtendedSignatureDataByPage } from '../../utils/data';
+import BrandSettingsContext from 'contexts/brandSettings';
+
+import { getExtendedSignatureDataByPage } from 'utils/data';
 
 import SigningField from './SigningField';
 import { Group } from './SigningField.styled';

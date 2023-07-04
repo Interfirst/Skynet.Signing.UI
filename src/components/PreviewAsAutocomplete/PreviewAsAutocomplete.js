@@ -2,8 +2,9 @@ import React, { memo, useCallback, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 
-import { SignStatus } from '../../constants/FormPreview.constants';
-import Select from '../../shared/Select';
+import { SignStatus } from 'constants/FormPreview.constants';
+
+import Select from 'shared/Select';
 
 const PreviewAsAutocomplete = ({
   isLoading,

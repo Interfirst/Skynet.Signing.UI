@@ -1,9 +1,11 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { HelloSignTagType } from '../../constants/FormPreview.constants';
-import BrandSettingsContext from '../../contexts/brandSettings';
-import { getIsFieldChecked } from '../../utils/data';
+import { HelloSignTagType } from 'constants/FormPreview.constants';
+
+import BrandSettingsContext from 'contexts/brandSettings';
+
+import { getIsFieldChecked } from 'utils/data';
 
 import Signature from './Signature';
 import { DivRoot, Input } from './SigningField.styled';

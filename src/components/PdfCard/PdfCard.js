@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import usePrevious from '../../hooks/usePrevious';
+import usePrevious from 'hooks/usePrevious';
 
 const PdfCard = ({ pageNumber, scale, pdf }) => {
   const [canvas, setCanvas] = useState(null);

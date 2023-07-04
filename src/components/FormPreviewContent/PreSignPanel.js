@@ -2,10 +2,13 @@ import React, { memo, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import PreviewAsAutocomplete from '../../components/PreviewAsAutocomplete';
-import { SignStatus } from '../../constants/FormPreview.constants';
-import BrandSettingsContext from '../../contexts/brandSettings';
-import Button from '../../shared/Button';
+import PreviewAsAutocomplete from 'components/PreviewAsAutocomplete';
+
+import { SignStatus } from 'constants/FormPreview.constants';
+
+import Button from 'shared/Button';
+
+import BrandSettingsContext from 'contexts/brandSettings';
 
 const PreSignRow = styled.div({
   display: 'flex',

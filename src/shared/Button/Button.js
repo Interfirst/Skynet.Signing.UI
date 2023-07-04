@@ -2,7 +2,7 @@ import React from 'react';
 import { get } from 'lodash';
 import styled from 'styled-components';
 
-import BrandSettingsContext from '../../contexts/brandSettings';
+import BrandSettingsContext from 'contexts/brandSettings';
 
 const ButtonStyled = styled.button({
   color: ({ variant, $brandSettings }) => {

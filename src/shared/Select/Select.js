@@ -79,6 +79,7 @@ const Select = ({
   return (
     <ReactSelect
       className={className}
+      classNamePrefix={classNamePrefix}
       components={components}
       disabled={disabled}
       getOptionLabel={getOptionLabel}
@@ -89,7 +90,6 @@ const Select = ({
       styles={commonStyles}
       value={value}
       onChange={onChange}
-      classNamePrefix={classNamePrefix}
     />
   );
 };

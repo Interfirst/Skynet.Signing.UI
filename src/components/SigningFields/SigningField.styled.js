@@ -1,7 +1,7 @@
 import { get } from 'lodash';
 import styled from 'styled-components';
 
-import { FieldStyle, HelloSignTagType } from '../../constants/FormPreview.constants';
+import { FieldStyle, HelloSignTagType } from 'constants/FormPreview.constants';
 
 export const DivRoot = styled.div({
   position: 'absolute',

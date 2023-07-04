@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import styled from 'styled-components';
 
-import BrandSettingsContext from '../../../../contexts/brandSettings';
-import Select from '../../../../shared/Select';
+import Select from 'shared/Select';
+
 import { fonts } from '../Signature.constants';
 
 const commonStyles = {
@@ -60,7 +60,7 @@ const ChooseFont = ({
         </OptionLabel>
       );
     },
-    [tempSignatureFont, tempSignatureFieldRef],
+    [tempSignatureFont, tempSignatureFieldRef, brandSettings],
   );
 
   return (

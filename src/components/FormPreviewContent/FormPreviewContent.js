@@ -5,14 +5,18 @@ import PropTypes from 'prop-types';
 import { downloadFileFromBlob } from '@interfirst/utils';
 import { get, isEmpty, last, size } from 'lodash';
 
-import { toastContainerStyle } from '../../constants/FormPreview.constants';
-// import { defaultProps, previewData } from '../../constants/FormPreview.stubData';
-import BrandSettingsContext from '../../contexts/brandSettings';
-import Button from '../../shared/Button';
-import { axiosAccountsInstance } from '../../utils/accountsApi';
-import { catchHandler, checkIsAppLoadedInIframe, getAuthHeader } from '../../utils/api';
-import { getInitialFormValues, getSignatureSubmitData, validateFormFields } from '../../utils/data';
-import { axiosSigningInstance } from '../../utils/signingApi';
+import { toastContainerStyle } from 'constants/FormPreview.constants';
+
+import Button from 'shared/Button';
+
+// import { defaultProps, previewData } from 'constants/FormPreview.stubData';
+import BrandSettingsContext from 'contexts/brandSettings';
+
+import { axiosAccountsInstance } from 'utils/accountsApi';
+import { catchHandler, checkIsAppLoadedInIframe, getAuthHeader } from 'utils/api';
+import { getInitialFormValues, getSignatureSubmitData, validateFormFields } from 'utils/data';
+import { axiosSigningInstance } from 'utils/signingApi';
+
 import DocumentView from '../DocumentView';
 import SigningFields from '../SigningFields';
 

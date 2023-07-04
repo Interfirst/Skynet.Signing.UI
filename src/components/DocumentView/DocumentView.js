@@ -3,9 +3,11 @@ import showMessage from 'react-hot-toast';
 import PropTypes from 'prop-types';
 import * as pdfjsLib from 'pdfjs-dist';
 
-import useWindowSize from '../../hooks/useWindowSize';
-import { getAuthHeader } from '../../utils/api';
-import { getDocumentScale, getPagesMaxWidth } from '../../utils/FormPreview.utils';
+import useWindowSize from 'hooks/useWindowSize';
+
+import { getAuthHeader } from 'utils/api';
+import { getDocumentScale, getPagesMaxWidth } from 'utils/FormPreview.utils';
+
 import PdfCard from '../PdfCard';
 
 import { DivPage, DivRoot } from './DocumentView.styled';

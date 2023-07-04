@@ -1,19 +1,18 @@
 {
   "plugins": [
-    // Need 16x node - a lot of problems, e.g. packages/utils, packages/signing-custom-service babel, etc
-    // [
-    //   "module-resolver",
-    //   {
-    //     "alias": {
-    //       "constants": "./src/constants",
-    //       "components": "./src/components",
-    //       "hooks": "./src/hooks",
-    //       "shared": "./src/shared",
-    //       "contexts": "./src/contexts",
-    //       "utils": "./src/utils"
-    //     }
-    //   }
-    // ],
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "constants": "./src/constants",
+          "components": "./src/components",
+          "hooks": "./src/hooks",
+          "shared": "./src/shared",
+          "contexts": "./src/contexts",
+          "utils": "./src/utils"
+        }
+      }
+    ],
     [
       "babel-plugin-transform-imports",
       {

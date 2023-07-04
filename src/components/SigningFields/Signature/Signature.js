@@ -2,17 +2,22 @@ import React, { memo, useCallback, useMemo, useRef, useState } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
 import PropTypes from 'prop-types';
 
-import { HelloSignTagType } from '../../../constants/FormPreview.constants';
-import useWindowSize from '../../../hooks/useWindowSize';
-import Button from '../../../shared/Button';
-import Dialog from '../../../shared/Dialog';
-import { convertTextToImage } from '../../../utils/FormPreview.utils';
+import { HelloSignTagType } from 'constants/FormPreview.constants';
+
+import useWindowSize from 'hooks/useWindowSize';
+
+import Button from 'shared/Button';
+import Dialog from 'shared/Dialog';
+
+import { convertTextToImage } from 'utils/FormPreview.utils';
+
 import { DivRoot } from '../SigningField.styled';
 
 import ChooseFont from './ChooseFont';
 import { canvasProps, fonts } from './Signature.constants';
 import {
   baseModalWidth,
+  ConfirmationText,
   DialogBottom,
   DialogMain,
   dialogMainMargin,
@@ -21,7 +26,6 @@ import {
   ResetButton,
   SignatureImg,
   SignatureInput,
-  ConfirmationText,
 } from './Signature.styled';
 
 const Signature = ({
@@ -93,7 +97,7 @@ const Signature = ({
       default:
         break;
     }
-  }, [activeSignatureType]);
+  }, [activeSignatureType, onDrawingEnd]);
 
   const onDialogClose = useCallback(() => {
     onClearTempSignature();
@@ -237,9 +241,9 @@ const Signature = ({
                 </Button>
 
                 <SignatureCanvas
-                  onEnd={onDrawingEnd}
                   canvasProps={formattedCanvasProps}
                   ref={tempSignatureFieldRef}
+                  onEnd={onDrawingEnd}
                 />
               </>
             )}
@@ -255,10 +259,10 @@ const Signature = ({
 
                 <SignatureInput
                   autoFocus
-                  onChange={onDrawingEnd}
                   fontFamily={tempSignatureFont.name}
                   ref={tempSignatureFieldRef}
                   type="text"
+                  onChange={onDrawingEnd}
                 />
               </>
             )}
@@ -276,8 +280,8 @@ const Signature = ({
 
               <div>
                 <Button
-                  disabled={isSubmitButtonDisabled}
                   color="primary"
+                  disabled={isSubmitButtonDisabled}
                   type="submit"
                   variant="contained"
                 >
