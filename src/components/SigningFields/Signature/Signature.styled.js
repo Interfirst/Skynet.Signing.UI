@@ -119,7 +119,7 @@ export const SignatureInput = styled.input({
   width: '90%',
   height: 50,
   padding: '10px 20px',
-  fontSize: 24,
+  fontSize: 36,
   fontFamily: ({ fontFamily }) => `${fontFamily} !important`,
   fontStyle: 'italic',
   boxSizing: 'border-box',
