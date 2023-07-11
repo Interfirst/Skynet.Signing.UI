@@ -7,9 +7,9 @@ import { get, isEmpty, last, size } from 'lodash';
 
 import { toastContainerStyle } from 'constants/FormPreview.constants';
 
+// import { defaultProps, previewData } from 'constants/FormPreview.stubData';
 import Button from 'shared/Button';
 
-// import { defaultProps, previewData } from 'constants/FormPreview.stubData';
 import BrandSettingsContext from 'contexts/brandSettings';
 
 import { axiosAccountsInstance } from 'utils/accountsApi';
@@ -162,7 +162,7 @@ const FormPreviewContent = ({ signingRequestId, getToken, getDomainName }) => {
       <DivRoot>
         <Helmet>
           <link
-            href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Overpass:ital,wght@0,300;0,400;0,700;0,800;1,300&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script&family=Mrs+Saint+Delafield&family=Overpass:ital,wght@0,300;0,400;0,700;0,800;1,300&display=swap"
             rel="stylesheet"
           />
         </Helmet>

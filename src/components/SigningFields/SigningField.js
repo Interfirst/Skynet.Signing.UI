@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 
 import { HelloSignTagType } from 'constants/FormPreview.constants';
 
+import BoxInput from 'shared/BoxInput';
+
 import BrandSettingsContext from 'contexts/brandSettings';
 
 import { getIsFieldChecked } from 'utils/data';
 
 import Signature from './Signature';
-import { DivRoot, Input } from './SigningField.styled';
+import { DivRoot } from './SigningField.styled';
 
 const SigningField = ({
   id,
@@ -83,7 +85,7 @@ const SigningField = ({
       case HelloSignTagType.TEXT_FIELD:
         return (
           <DivRoot $brandSettings={brandSettings} ref={ref} {...props}>
-            <Input
+            <input
               disabled={isLoading}
               name={id}
               type="text"
@@ -112,12 +114,12 @@ const SigningField = ({
       case HelloSignTagType.CHECKBOX: {
         return (
           <DivRoot {...props} $brandSettings={brandSettings} ref={ref} type="box">
-            <Input
-              checked={value}
+            <BoxInput
               disabled={isLoading}
-              name={id}
-              title={validationError}
+              id={id}
               type="checkbox"
+              validationError={validationError}
+              value={value}
               onChange={onCheckboxChange}
             />
           </DivRoot>
@@ -127,12 +129,12 @@ const SigningField = ({
       case HelloSignTagType.RADIO: {
         return (
           <DivRoot {...props} $brandSettings={brandSettings} ref={ref} type="box">
-            <Input
-              checked={value}
+            <BoxInput
               disabled={isLoading}
-              name={id}
-              title={validationError}
+              id={id}
               type="radio"
+              validationError={validationError}
+              value={value}
               onChange={onRadioChange}
             />
           </DivRoot>

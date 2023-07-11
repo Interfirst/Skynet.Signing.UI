@@ -24,7 +24,13 @@ export const DivRoot = styled.div({
 
     return `${scale * height}px`;
   },
-  fontSize: ({ height, scale }) => `${Math.floor(0.7 * scale * height)}px`,
+  fontSize: ({ height, scale, type }) => {
+    if (type === 'box') {
+      return `${0.7 * scale * FieldStyle[HelloSignTagType.CHECKBOX].size.height}px`;
+    }
+
+    return `${Math.floor(0.7 * scale * height)}px`;
+  },
   borderColor: ({ validationError, $brandSettings }) =>
     get(
       $brandSettings,
@@ -36,6 +42,17 @@ export const DivRoot = styled.div({
   borderWidth: ({ scale }) => `${scale * 1}px`,
   zIndex: 1,
 
+  '& input, & label': {
+    position: 'absolute',
+    background: 'transparent',
+    border: 'none',
+    width: '100%',
+    height: '100%',
+    outline: 'none',
+    fontSize: 'inherit',
+    margin: 0,
+  },
+
   '&::after': {
     content: '"*"',
     position: 'absolute',
@@ -46,17 +63,6 @@ export const DivRoot = styled.div({
     fontSize: ({ scale }) => `${Math.floor(scale * 16)}px`,
     display: ({ isRequired }) => (isRequired ? 'block' : 'none'),
   },
-});
-
-export const Input = styled.input({
-  position: 'absolute',
-  background: 'transparent',
-  border: 'none',
-  width: '100%',
-  height: '100%',
-  outline: 'none',
-  fontSize: 'inherit',
-  margin: 0,
 });
 
 export const Group = styled.div({

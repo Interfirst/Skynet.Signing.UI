@@ -14,14 +14,6 @@ const commonStyles = {
     border: 'none',
     background: 'transparent',
   }),
-  menu: styles => ({
-    ...styles,
-    width: 200,
-  }),
-  option: styles => ({
-    ...styles,
-    textAlign: 'left',
-  }),
 };
 
 const selectComponents = {

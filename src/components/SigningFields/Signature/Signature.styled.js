@@ -115,14 +115,13 @@ export const DialogMain = styled.div(({ $brandSettings }) => {
 });
 
 export const SignatureInput = styled.input({
-  marginTop: 120,
+  marginTop: 130,
   width: '90%',
-  height: 50,
-  padding: '10px 20px',
+  height: 'auto',
+  padding: 0,
   fontSize: 36,
   fontFamily: ({ fontFamily }) => `${fontFamily} !important`,
   fontStyle: 'italic',
-  boxSizing: 'border-box',
   border: 'none',
   background: 'transparent',
   textAlign: 'center',

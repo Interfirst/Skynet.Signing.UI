@@ -56,10 +56,18 @@ const Select = ({
         color: dropDownOptionColor,
         backgroundColor: dropDownBackgroundColor,
         cursor: 'pointer',
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textAlign: 'left',
 
         '&:hover': {
           color: hoverTextColor,
         },
+      }),
+      menu: styles => ({
+        ...styles,
+        width: 260,
       }),
       indicatorsContainer: () => ({
         [`.${classNamePrefix}`]: {
