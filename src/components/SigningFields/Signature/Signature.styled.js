@@ -116,6 +116,7 @@ export const DialogMain = styled.div(({ $brandSettings }) => {
 
 export const SignatureInput = styled.input({
   marginTop: 130,
+  lineHeight: 1,
   width: '90%',
   height: 'auto',
   padding: 0,
